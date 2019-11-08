@@ -3,6 +3,7 @@
  */
 package co.Mingwang.dao;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -23,8 +24,27 @@ public class MemberDao extends DAO {
 	
 	public ArrayList<MemberDto> select(){ //전체 회원정보 가져오기
 		list = new ArrayList<MemberDto>();
-		//code 추가
-		close();
+		MemberDto result=null;
+		String sql ="select * from member";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				result = new MemberDto();
+				result.setId(rs.getString("member_id"));
+				result.setPassword(rs.getString("member_pass"));
+				result.setName(rs.getString("member_name"));
+				result.setGrant(rs.getString("member_grant"));
+				result.seteDate(rs.getString("member_enterdate"));
+				result.setAddr(rs.getString("member_addr"));
+				result.setTel(rs.getString("member_tel"));
+				list.add(result);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 		return list;
 	}
 	
@@ -37,8 +57,21 @@ public class MemberDao extends DAO {
 	
 	public int insert(MemberDto dto) {
 		int n=0;
-		//code 추가
-		close();
+		String sql = "insert into member value(member_id, member_pass, member_name, member_addr, member_tel) "
+				   + "values (?, ?, ?, ?, ?)";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getPassword());
+			psmt.setString(3, dto.getName());
+			psmt.setString(4, dto.getAddr());
+			psmt.setString(5, dto.getTel());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 		return n;
 	}
 	
@@ -53,10 +86,6 @@ public class MemberDao extends DAO {
 		//code 추가
 		close();
 		return n;
-	}
-
-	public boolean isIdCheck() { //Id 중복체크를 위함
-		return false;
 	}
 	
 	public String loginCheck(String id, String pw) {

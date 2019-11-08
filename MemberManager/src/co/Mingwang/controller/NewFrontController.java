@@ -12,10 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.Mingwang.command.IndexCommand;
+import co.Mingwang.command.board.BoardListCommand;
+import co.Mingwang.command.member.IdCheckCommand;
+import co.Mingwang.command.member.LoginCommand;
 import co.Mingwang.command.member.LoginOkCommand;
 import co.Mingwang.command.member.LogoutCommand;
+import co.Mingwang.command.member.MemberListCommand;
+import co.Mingwang.command.member.NewMemberCommand;
+import co.Mingwang.command.member.NewMemberOkCommand;
+import co.Mingwang.command.notice.NoticeCommand;
+import co.Mingwang.command.notice.NoticeInputCommand;
+import co.Mingwang.command.notice.NoticeInputOkCommand;
 import co.Mingwang.common.Command;
-import co.Mingwang.common.LoginCommand;
 
 /**
  * Servlet implementation class NewFrontController
@@ -40,9 +48,16 @@ public class NewFrontController extends HttpServlet {
 		cont.put("/login.do", new LoginCommand());
 		cont.put("/loginOk.do", new LoginOkCommand());
 		cont.put("/logout.do", new LogoutCommand());
-//		cont.put("/index.do", new IndexCommand());
-//		cont.put("/index.do", new IndexCommand());
-//		cont.put("/index.do", new IndexCommand());
+		cont.put("/newMember.do", new NewMemberCommand());
+		cont.put("/idCheck.do", new  IdCheckCommand());
+		cont.put("/newMemberOk.do", new NewMemberOkCommand());
+		cont.put("/memberList.do", new MemberListCommand());
+		cont.put("/notice.do", new NoticeCommand());
+		cont.put("/noticeInput.do", new NoticeInputCommand());
+		cont.put("/noticeInputOk.do", new NoticeInputOkCommand());
+		cont.put("/boardeList.do", new BoardListCommand());
+		
+		
 		
 	}
 
@@ -56,6 +71,7 @@ public class NewFrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String context = request.getContextPath();
 		String path = uri.substring(context.length());
+		System.out.println(path);
 		
 		Command commandImpl = cont.get(path);
 		commandImpl.execute(request, response);	

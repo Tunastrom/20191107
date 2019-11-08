@@ -6,9 +6,9 @@ public class MemberDto {
 	private String id; 
 	private String name;
 	private String password;
-	private char grant;
+	private String grant;
 	private String addr;
-	private Date eDate;
+	private String eDate;
 	private String tel;
 	
 	public MemberDto() {
@@ -33,10 +33,10 @@ public class MemberDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public char getGrant() {
+	public String getGrant() {
 		return grant;
 	}
-	public void setGrant(char grant) {
+	public void setGrant(String grant) {
 		this.grant = grant;
 	}
 	public String getAddr() {
@@ -45,10 +45,10 @@ public class MemberDto {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	public Date geteDate() {
+	public String geteDate() {
 		return eDate;
 	}
-	public void seteDate(Date eDate) {
+	public void seteDate(String eDate) {
 		this.eDate = eDate;
 	}
 	public String getTel() {

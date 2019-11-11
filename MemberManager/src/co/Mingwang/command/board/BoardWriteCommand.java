@@ -1,7 +1,6 @@
 package co.Mingwang.command.board;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,16 +11,11 @@ import co.Mingwang.common.Command;
 import co.Mingwang.dao.BoardDao;
 import co.Mingwang.dto.BoardDto;
 
-public class BoardListCommand implements Command {
+public class BoardWriteCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BoardDto dto = new BoardDto();
-		BoardDao dao = new BoardDao();
-		ArrayList<BoardDto> list = dao.select(0);
-		
-		request.setAttribute("list", list);
-		String path="view/boardList.jsp";
+		String path="view/boardWrite.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,16 +13,21 @@ import co.Mingwang.common.Command;
 import co.Mingwang.dao.BoardDao;
 import co.Mingwang.dto.BoardDto;
 
-public class BoardListCommand implements Command {
+public class BoardReadCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BoardDto dto = new BoardDto();
 		BoardDao dao = new BoardDao();
-		ArrayList<BoardDto> list = dao.select(0);
+		BoardDto dto = new BoardDto();
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
+		ArrayList<BoardDto> list = dao.select(id);
+		
+		
 		
 		request.setAttribute("list", list);
-		String path="view/boardList.jsp";
+//		request.setAttribute("id", id);
+		String path="view/boardRead.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
 	}

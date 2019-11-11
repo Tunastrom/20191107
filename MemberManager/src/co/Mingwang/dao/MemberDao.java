@@ -88,23 +88,24 @@ public class MemberDao extends DAO {
 		return n;
 	}
 	
-	public String loginCheck(String id, String pw) {
-		String grant=null;
-		String sql ="select member_grant from member where member_id =? and member_pass=?";
+	public MemberDto loginCheck(String id, String pw) {
+		MemberDto result=new MemberDto();
+		String sql ="select member_grant, member_name from member where member_id=? and member_pass=?";
 		try {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				grant=rs.getString("member_grant");
+				result.setName(rs.getString("member_name"));
+				result.setGrant(rs.getString("member_grant"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return grant;
+		return result;
 	}
 	
 }

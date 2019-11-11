@@ -16,7 +16,7 @@
             $("#example").dataTable();
         });
         function transData(n){
-        	frm.id. value = n;
+        	frm.id.value = n;
         	frm.submit();
         }
     </script>

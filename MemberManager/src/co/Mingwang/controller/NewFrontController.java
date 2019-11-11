@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.Mingwang.command.IndexCommand;
 import co.Mingwang.command.board.BoardListCommand;
+import co.Mingwang.command.board.BoardReadCommand;
+import co.Mingwang.command.board.BoardWriteCommand;
+import co.Mingwang.command.board.BoardWriteOkCommand;
 import co.Mingwang.command.member.IdCheckCommand;
 import co.Mingwang.command.member.LoginCommand;
 import co.Mingwang.command.member.LoginOkCommand;
@@ -55,7 +58,12 @@ public class NewFrontController extends HttpServlet {
 		cont.put("/notice.do", new NoticeCommand());
 		cont.put("/noticeInput.do", new NoticeInputCommand());
 		cont.put("/noticeInputOk.do", new NoticeInputOkCommand());
-		cont.put("/boardeList.do", new BoardListCommand());
+		cont.put("/boardList.do", new BoardListCommand());
+		cont.put("/boardWrite.do", new BoardWriteCommand());
+		cont.put("/boardWriteOk.do", new BoardWriteOkCommand());
+		cont.put("/boardRead.do", new BoardReadCommand());
+		
+		
 		
 		
 		

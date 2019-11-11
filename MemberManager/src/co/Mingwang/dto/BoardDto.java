@@ -7,11 +7,12 @@ public class BoardDto {
 	private String writer;
 	private String title;
 	private String contents;
-	private Date wDate;
+	private String wDate;
 	private int hit;
 	private int group;
 	private int step;
 	private int indent;
+	private String userId;
 		
 	public BoardDto() {
 		
@@ -49,11 +50,11 @@ public class BoardDto {
 		this.contents = contents;
 	}
 
-	public Date getwDate() {
+	public String getwDate() {
 		return wDate;
 	}
 
-	public void setwDate(Date wDate) {
+	public void setwDate(String wDate) {
 		this.wDate = wDate;
 	}
 
@@ -87,5 +88,13 @@ public class BoardDto {
 
 	public void setIndent(int indent) {
 		this.indent = indent;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }

@@ -16,8 +16,8 @@
 					<table>
 						<caption align="bottom">
 							<div align="right" style="margin: 5px;">
-								<span><input type="submit" value="로그인"></button></span>
-								<span><input type="reset" value="초기화"></button></span>
+								<span><input type="submit" value="로그인"></span>
+								<span><input type="reset" value="초기화"></span>
 								<span><input type="button" onclick="location.href='index.do'" value="취소"></input></span>
 							</div>
 						</caption>

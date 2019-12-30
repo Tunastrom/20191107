@@ -36,7 +36,7 @@
 					<caption align="bottom">
 						<div align="center">
 							<br />
-							<button type="button" onclick="location.href='boardWrite.do'">글쓰기</button>
+							<button type="button" onclick="location.href='boardWrite.do?id='">글쓰기</button>
 						</div>
 					</caption>
 					</c:if>

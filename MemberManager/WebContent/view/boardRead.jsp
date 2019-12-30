@@ -35,7 +35,7 @@
 						</c:if>
 					</div>
 					<div align="center">
-						<c:if test="${id == list[0].userId}">
+						<c:if test="${id == list[0].userid}">
 							<br />
 							<button type="button" onclick="location.href='boardEdit.do'">글수정</button>
 							<button type="button" onclick="location.href='boardelete.do'">글삭제</button>

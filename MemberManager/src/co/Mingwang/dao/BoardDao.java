@@ -54,7 +54,18 @@ public class BoardDao extends DAO {
 		int n=0;
 		String sql ="insert into mvc_board (bid, bname, btitle, bcontent, bgroup, bstep, bident, userid) "
 				   +"values(b_num.nextval, ?, ?, ?, b_num.currval, 0, 0, ?)";
-		conn.prepare
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, dto.getWriter());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContents());
+			psmt.setString(4, dto.getUserId());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 		return n;
 	}
 	

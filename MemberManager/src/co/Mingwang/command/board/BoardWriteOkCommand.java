@@ -26,7 +26,7 @@ public class BoardWriteOkCommand implements Command {
 		if(n == 0) {
 			path="boardWrite.do";
 		} else {
-			path="boardRead.do";
+			path="boardList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
